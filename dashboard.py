@@ -4,8 +4,12 @@ from resumeAnalysis import analyze_and_store_resumes, get_analyzed_resumes, get_
 def show_hr_dashboard_analysis():
     st.title("📊 HR Dashboard Analysis")
 
+    # Initialize session state for sidebar details
+    if "selected_resume" not in st.session_state:
+        st.session_state.selected_resume = None
+
     job_descriptions = get_job_descriptions()
-    
+
     if not job_descriptions:
         st.warning("⚠ No job descriptions found. Please add one first.")
         return
@@ -18,10 +22,38 @@ def show_hr_dashboard_analysis():
 
     resumes = get_analyzed_resumes()
     
-    filtered_resumes = [(candidate, score) for candidate, score, job in resumes if job == selected_job]
-    
+    # Ensure correct unpacking
+    filtered_resumes = [
+        (candidate, score, summary, tech_stacks) 
+        for candidate, score, summary, tech_stacks, job in resumes if job == selected_job
+    ]
+
     if not filtered_resumes:
         st.warning("⚠ No analyzed resumes found for this job description.")
     else:
-        st.write(f"### Resume Analysis Results for '{selected_job}' (Sorted by Score)")
-        st.table(filtered_resumes)  # Display only candidate name and score
+        st.write(f"### Resume Analysis Results for '{selected_job}' (Click on a row for details)")
+
+        # Create table structure
+        col1, col2, col3 = st.columns([2, 1, 1])
+        col1.write("**Candidate**")
+        col2.write("**Score**")
+        col3.write("**Details**")
+
+        for candidate, score, summary, tech_stacks in filtered_resumes:
+            col1, col2, col3 = st.columns([2, 1, 1])
+            col1.write(candidate)
+            col2.write(score)
+            # Button to trigger sidebar update
+            if col3.button(f"🔍 View", key=candidate):
+                st.session_state.selected_resume = (candidate, summary, tech_stacks)
+
+    # Sidebar for detailed view
+    with st.sidebar:
+        st.header("📜 Resume Details")
+        if st.session_state.selected_resume:
+            candidate, summary, tech_stacks = st.session_state.selected_resume
+            st.subheader(f"**{candidate}**")
+            st.markdown(f"**Summary:**\n{summary}")
+            st.markdown(f"**Tech Stacks:**\n{tech_stacks}")
+            if st.button("Close Details"):
+                st.session_state.selected_resume = None

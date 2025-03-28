@@ -2,6 +2,7 @@ import os
 import pdfplumber
 import sqlite3
 import dotenv
+import json
 from google import genai
 
 dotenv.load_dotenv()
@@ -17,6 +18,8 @@ def initialize_database():
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         candidate_name TEXT,
                         score INTEGER,
+                        tech_stacks TEXT,
+                        summary TEXT,
                         file_path TEXT,
                         job_description TEXT)''')
     conn.commit()
@@ -32,22 +35,36 @@ def extract_text_from_pdf(pdf_path):
         print(f"Error reading {pdf_path}: {e}")
     return text.strip()
 
-def get_resume_score(resume_text, job_description):
+def process_gemini_output(output):
+    try:
+        output = output.replace("```json", "").replace("```python", "").replace("```", "").strip()
+        return json.loads(output)
+    except Exception as e:
+        print(f"Error processing Gemini output: {e}")
+        return {"score": 0, "summary": "", "tech_stacks": []}
+
+def get_resume_analysis(resume_text, job_description):
     if not resume_text:
-        return 0
+        return {"score": 0, "summary": "", "tech_stacks": []}
     
-    prompt = f"Evaluate this resume for the following job description:\n\n{job_description}\n\nResume:\n{resume_text}\n\nGive a score out of 100."
+    prompt = (
+        f"Analyze this resume based on the following job description:\n\n"
+        f"Job Description:\n{job_description}\n\n"
+        f"Resume:\n{resume_text}\n\n"
+        "Provide the output in JSON format with the following keys:\n"
+        "- 'score': An integer out of 100.\n"
+        "- 'summary': A short summary of the candidate's experience and skills.\n"
+        "- 'tech_stacks': A list of technologies the candidate has experience with."
+    )
     try:
         response = genai_client.models.generate_content(
             model="gemini-2.0-flash", contents=prompt
         )
         response_text = response.candidates[0].content.parts[0].text  
-        score_line = response_text.split("\n")[2]  
-        score = int(score_line.split(":")[1].strip().split("/")[0])  
-        return max(0, min(100, score))
+        return process_gemini_output(response_text)
     except Exception as e:
-        print(f"Error analyzing resume score: {e}")
-        return 0  
+        print(f"Error analyzing resume: {e}")
+        return {"score": 0, "summary": "", "tech_stacks": []}
 
 def analyze_and_store_resumes(job_description):
     initialize_database()
@@ -59,10 +76,12 @@ def analyze_and_store_resumes(job_description):
     for resume in resumes:
         pdf_path = os.path.join(resume_folder, resume)
         resume_text = extract_text_from_pdf(pdf_path)
-        score = get_resume_score(resume_text, job_description)
+        analysis = get_resume_analysis(resume_text, job_description)
         candidate_name = resume.replace(".pdf", "").replace("_", " ").title()
-        cursor.execute("INSERT INTO resume_analysis (candidate_name, score, file_path, job_description) VALUES (?, ?, ?, ?)", 
-                       (candidate_name, score, pdf_path, job_description))
+        cursor.execute("""
+            INSERT INTO resume_analysis (candidate_name, score, tech_stacks, summary, file_path, job_description)
+            VALUES (?, ?, ?, ?, ?, ?)""", 
+            (candidate_name, analysis["score"], json.dumps(analysis["tech_stacks"]), analysis["summary"], pdf_path, job_description))
     conn.commit()
     conn.close()
 
@@ -70,7 +89,7 @@ def get_analyzed_resumes():
     initialize_database()
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT candidate_name, score, job_description FROM resume_analysis ORDER BY score DESC")
+    cursor.execute("SELECT candidate_name, score, tech_stacks, summary, job_description FROM resume_analysis ORDER BY score DESC")
     data = cursor.fetchall()
     conn.close()
     return data
