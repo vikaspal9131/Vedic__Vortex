@@ -75,7 +75,7 @@ def show_hr_dashboard_analysis():
         if st.session_state.selected_resume:
             candidate, summary, tech_stacks = st.session_state.selected_resume
             st.subheader(f"**{candidate}**")
-            st.markdown(f"**Summary:**\n{summary}")
-            st.markdown(f"**Tech Stacks:**\n{tech_stacks}")
+            st.markdown(f"**Tech Stacks:**\n{summary}")
+            st.markdown(f"**Summary:**\n{tech_stacks}")
             if st.button("Close Details"):
                 st.session_state.selected_resume = None
