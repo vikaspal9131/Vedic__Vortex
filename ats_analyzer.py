@@ -4,7 +4,6 @@ import time
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 import google.generativeai as genai
-from hr import show_hr_ui
 
 # Load environment variables
 load_dotenv()
@@ -80,7 +79,7 @@ def analyze_resume(file_path):
 
 def show_candidate_ui():
     st.sidebar.title("Candidate Portal")
-    page = st.sidebar.radio("Select an Option:", ["Upload Resume", "View Analysis", "HR Dashboard"])
+    page = st.sidebar.radio("Select an Option:", ["Upload Resume", "View Analysis"])
     
     if page == "Upload Resume":
         st.subheader("Upload Your Resume")
@@ -106,8 +105,5 @@ def show_candidate_ui():
             st.text_area("", st.session_state.analysis_result, height=400)
         else:
             st.info("No analysis found. Please upload and analyze your resume first.")
-    
-    elif page == "HR Dashboard":
-        show_hr_ui()
     
     st.markdown("---")
