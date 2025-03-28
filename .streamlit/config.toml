@@ -1,0 +1,12 @@
+[theme]
+base="light"
+primaryColor="#000000"  # Black text color
+backgroundColor="#FFFFFF"  # White background
+secondaryBackgroundColor="#F0F0F0"  # Light gray sidebar
+textColor="#000000"  # Black text
+font="sans serif"
+
+[button]
+borderColor="#000000"  # Black border
+borderRadius="6px"  # Rounded corners
+hoverColor="#000000"  # Black hover color
