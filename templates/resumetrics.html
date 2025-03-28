@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/custom.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="output.css">
+  <link rel="shortcut icon" href="/nuvaria1.0/image/fevicon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Lexend:wght@100..900&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <title>nuvaria</title>
+  <style>
+
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+}
+
+@keyframes l2 {to{background-size: 100% 3px}}
+  </style>
+
+  
+</head>
+
+  <div id="main">
+
+  <div class="inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+
+    <nav class="flex items-center justify-between px-20 py-6">
+      <!-- Logo -->
+      <div>
+        <a href="#">
+ 
+          </a> ResuMetrics</a>
+      </div>
+  
+      <div class="mr-16 flex items-center">
+          <!-- Login Button -->
+          <a id="login-btn" href="login.html" class="hover:text-gray-300 bg-black text-white px-4 py-1 rounded-md mr-4">Login</a>
+  
+          <!-- User Profile Image -->
+          <div id="user-profile" style="display: none;">
+              <img id="user-img" src="default-avatar.png" alt="User Profile" class="w-10 h-10 rounded-full border border-gray-300 shadow-sm">
+          </div>
+      </div>
+  </nav>
+  
+      <div class= "flex justify-center items-center flex-col z-50 px-24 mt-20">
+        
+        <a href="#" class="px-28 text-black sm:text"></a>
+        <h1 id="heading" class=" text-center font-semibold  text-6xl tracking-wide">Resumetrics An AI-powered <br>resume analyzer </h1>
+        <p class="text-center py-5 font-sans text-xl"> Optimize your resume, stand out from the crowd,  and land <br> your dream job with AI-driven insights. </p>
+        <div class="flex gap-5 mb-12">
+         <a href="http://localhost:8501" class="px-10 py-3 bg-black text-white  rounded-md "> Upload Resume <i class="ri-arrow-right-line"></i></a>
+         <a href="See more" class="px-10 py-3 bg-gray-200 text-gray-600  rounded-md ">Try Demo</a>
+        </div>
+        
+      </div>  
+  
+    </div>
+
+<div
+  class="relative"
+  style="mask-image: linear-gradient(180deg, white 0%, transparent); -webkit-mask-image: linear-gradient(180deg, white 60%, transparent);"
+></div>
+  
+<div  class="flex justify-center items-center mt-10">
+
+  <img id="dash" class="w-4/5 rounded-md  " src="img/dash.png" alt="">
+</div>
+
+
+
+<div class="flex justify-evenly mt-32 w-full">
+
+</div>
+
+<div class="max-w-screen-xl mx-auto px-5 bg-white min-h-sceen mb-32">
+	<div class="flex flex-col items-center">
+		<h2 class=" text-5xl tracking-tight mt-20">
+      Frequently asked questions
+		</h2>
+		<p class="text-neutral-500 text-xl mt-3 text-center">
+      Have a different questions and can’t find the answer you’re looking for? Reach out to <br> our support team by sending us an email and we’ll get back to you as soon as we can.
+		</p>
+	</div>
+	<div class="grid divide-y divide-neutral-200 max-w-4xl mx-auto mt-8">
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none ">
+					<span> What is ResuMetrics?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+          ResuMetrics is an AI-powered resume analyzer that helps job seekers optimize their resumes by providing instant feedback, keyword suggestions, ATS compatibility checks, and industry-based resume scoring.
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+					<span> How does ResuMetrics improve my resume?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+					Our AI scans your resume for structure, relevant skills, formatting, and keyword optimization. It then provides actionable insights to improve your chances of passing ATS filters and catching recruiters’ attention.
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+					<span> Is ResuMetrics free to use?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+					We offer a free version with basic resume analysis. For advanced features like ATS optimization, detailed reports, and industry-based resume benchmarking, you can upgrade to a premium plan.
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+					<span> How do I upload my resume for analysis?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+					Simply click on the “Upload Resume” button on our homepage, select your resume file (PDF/DOCX), and get instant AI-powered feedback
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+					<span> Can I edit my resume based on the AI feedback?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+					Yes! After receiving your analysis report, you can make changes and re-upload your resume for further improvement suggestions.
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+					<span>Does ResuMetrics store my resume data? 					
+        </span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+          No, we prioritize user privacy. Your uploaded resume is processed in real-time, and we do not store or share your data.
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+					<span> Can recruiters use ResuMetrics for hiring?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+					Yes! We offer a recruiter dashboard where employers can analyze multiple resumes, rank candidates, and shortlist top talent based on AI-powered insights.
+				</p>
+			</details>
+		</div>
+		<div class="py-5">
+			<details class="group">
+				<summary class="flex justify-between items-center font-medium cursor-pointer list-none ">
+					<span > How can I contact customer support?</span>
+					<span class="transition group-open:rotate-180">
+                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+</svg>
+              </span>
+				</summary>
+				<p class="text-neutral-600 mt-3 group-open:animate-fadeIn ">
+					You can reach out to our support team via email or our Contact Us page, and we’ll respond as soon as possible.
+				</p>
+			</details>
+		</div>
+		
+	</div>
+</div>
+<div class="py-12 px-6 mt-44">
+  <div class="mx-auto text-center ">
+    <h2 class="text-6xl">Get started for free</h2>
+    <p class="text-gray-600 mt-4 text-xl">Take the first step towards your journey with us!</p>
+    <div class="mt-6 flex justify-center space-x-4">
+      <button class="px-6 py-3 bg-black text-white rounded-lg shadow-md">
+        Get start now
+      </button>
+     
+    </div>
+  </div>
+</div>
+<footer class=" py-10 mt-11">
+  <div class="mt-10 text-center text-gray-500">
+    <p>&copy; 2025 ResuMetrics. All rights reserved.</p>
+  </div>
+</footer>
+
+</div>
+<script src="./script/firebase.js"></script>
+<script src="./script/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

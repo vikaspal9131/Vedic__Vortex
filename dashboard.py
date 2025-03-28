@@ -2,7 +2,7 @@ import streamlit as st
 from resumeAnalysis import analyze_and_store_resumes, get_analyzed_resumes, get_job_descriptions
 
 def show_hr_dashboard_analysis():
-    st.title("📊 HR Dashboard Analysis")
+    st.title(" HR Dashboard Analysis")
 
     # Initialize session state for sidebar details
     if "selected_resume" not in st.session_state:

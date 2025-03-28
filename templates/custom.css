@@ -1,0 +1,17 @@
+#heading{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.8px;
+  font-style: normal;
+  line-height: 67px;
+}
+
+body{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+
+#dash{
+  border: 2px solid rgb(61, 61, 61);
+}
