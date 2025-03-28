@@ -28,6 +28,16 @@ def show_hr_dashboard_analysis():
         for candidate, score, summary, tech_stacks, job in resumes if job == selected_job
     ]
 
+    # UPDATED: Added an input field for minimum score
+    min_score = st.number_input(
+        "Enter minimum score to shortlist candidates (leave blank to show all):",
+        min_value=0, max_value=100, step=1, value=None
+    )
+
+    # UPDATED: Apply score-based filtering if a score is provided
+    if min_score is not None:
+        filtered_resumes = [res for res in filtered_resumes if res[1] >= min_score]
+
     if not filtered_resumes:
         st.warning("⚠ No analyzed resumes found for this job description.")
     else:
