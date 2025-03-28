@@ -47,11 +47,14 @@ def show_hr_dashboard_analysis():
 
     resumes = get_analyzed_resumes()
     
-    if not resumes:
-        st.warning("⚠ No analyzed resumes found.")
+    # Filter resumes only for the selected job description
+    filtered_resumes = [(candidate, score) for candidate, score, job in resumes if job == selected_job]
+    
+    if not filtered_resumes:
+        st.warning("⚠ No analyzed resumes found for this job description.")
     else:
-        st.write("### Resume Analysis Results (Sorted by Score)")
-        st.table([(candidate, score) for candidate, score, _ in resumes])  # Only display name & score
+        st.write(f"### Resume Analysis Results for '{selected_job}' (Sorted by Score)")
+        st.table(filtered_resumes)  # Display only candidate name and score
 
 # ✅ Main UI (HR Option Selection)
 def show_hr_ui():
